@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Services - MyBrand</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <!-- En-tête -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">My<span>Brand</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- Bannière des services -->
+    <section class="services-banner">
+        <div class="container">
+            <h1 data-aos="fade-down">Nos Services</h1>
+            <p data-aos="fade-up">Découvrez comment nous pouvons transformer vos idées en succès.</p>
+        </div>
+    </section>
+
+    <!-- Section des services détaillés -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Ce que nous proposons</h2>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-icon">
+                        <img src="assets/images/web-development.jpg" alt="Développement Web">
+                    </div>
+                    <h3>Développement Web</h3>
+                    <p>Création de sites web modernes, rapides et adaptés à tous les écrans.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <img src="assets/images/seo2.jpg" alt="Optimisation SEO">
+                    </div>
+                    <h3>Optimisation SEO</h3>
+                    <p>Augmentez la visibilité de votre site grâce à des stratégies efficaces.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <img src="assets/images/branding.jpg" alt="Stratégie de Marque">
+                    </div>
+                    <h3>Stratégie de Marque</h3>
+                    <p>Positionnez votre entreprise avec une identité unique et cohérente.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <img src="assets/images/digital-marketing.jpg" alt="Marketing Digital">
+                    </div>
+                    <h3>Marketing Digital</h3>
+                    <p>Des campagnes ciblées pour engager votre audience et maximiser votre impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Section FAQ -->
+   <section class="faq">
+        <div class="container">
+            <h2 data-aos="fade-up">Questions Fréquemment Posées</h2>
+            <div class="faq-item" data-aos="fade-right">
+                <h3 class="faq-question">
+                    Quels types de sites développez-vous ?
+                    <span class="icon">✖</span>
+                </h3>
+                <p class="faq-answer">Nous créons des sites vitrines, e-commerce, et plateformes personnalisées.</p>
+            </div>
+            <div class="faq-item" data-aos="fade-left">
+                <h3 class="faq-question">
+                    Comment garantissez-vous la qualité SEO ?
+                    <span class="icon">✖</span>
+                </h3>
+                <p class="faq-answer">Nous utilisons des outils avancés et suivons les meilleures pratiques de référencement.</p>
+            </div>
+            <div class="faq-item" data-aos="fade-right">
+                <h3 class="faq-question">
+                    Quels sont vos délais de livraison ?
+                    <span class="icon">✖</span>
+                </h3>
+                <p class="faq-answer">Les délais dépendent du type de projet. En moyenne, un site vitrine est livré en 2 à 4 semaines.</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 MyBrand. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Récupère tous les éléments FAQ
+        const faqItems = document.querySelectorAll('.faq-item');
+    
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Ferme les autres FAQ si une nouvelle est ouverte
+                faqItems.forEach(i => {
+                    if (i !== item) {
+                        i.classList.remove('active');
+                        i.querySelector('.icon').textContent = '✖';
+                    }
+                });
+    
+                // Bascule l'état actif de l'élément actuel
+                item.classList.toggle('active');
+    
+                // Met à jour l'icône selon l'état actif
+                const icon = item.querySelector('.icon');
+                icon.textContent = item.classList.contains('active') ? '➖' : '✖';
+            });
+        });
+    </script>
+    
+    
+</body>
+</html>
+

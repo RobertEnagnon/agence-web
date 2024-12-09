@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.2/dist/sweetalert2.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <!-- En-tête -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">My<span>Brand</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <header class="main-header contact-header">
+        <div class="container">
+            <h1>Contactez-nous</h1>
+            <p>Nous sommes là pour répondre à toutes vos questions.</p>
+        </div>
+    </header>
+
+    <!-- Section Formulaire de Contact -->
+    <section class="contact-form">
+        <div class="container">
+            <h2 data-aos="fade-up" style="text-align: center;" >Envoyez-nous un message</h2>
+            <form id="contactForm" action="#" method="post" data-aos="fade-up" data-aos-delay="100">
+                <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input type="text" id="name" name="name" placeholder="Votre nom" >
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Votre email" >
+                </div>
+                <div class="form-group">
+                    <label for="subject">Sujet</label>
+                    <input type="text" id="subject" name="subject" placeholder="Sujet du message" >
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Votre message" ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+            </form>
+            <div id="formMessage" class="form-message" data-aos="fade-up" data-aos-delay="200"></div>
+        </div>
+    </section>
+
+    <!-- Section Carte -->
+    <section class="contact-map">
+        <div class="container">
+            <h2 data-aos="fade-up">Localisation</h2>
+            <p data-aos="fade-up" data-aos-delay="100">Retrouvez-nous à notre bureau pour un rendez-vous.</p>
+            <div id="map" data-aos="fade-up" data-aos-delay="200">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.490438514519!2d2.3161430108379046!3d6.4593753238776666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1024a9f07100d34f%3A0x216d2e931f202115!2sTokan%20Carrefour!5e0!3m2!1sfr!2sbj!4v1733750226882!5m2!1sfr!2sbj" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Votre Entreprise. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+     <!-- Scripts -->
+     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.2/dist/sweetalert2.all.min.js"></script>
+     <script src="js/main.js"></script>
+     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        
+            const contactForm = document.getElementById("contactForm");
+            const formMessage = document.getElementById("formMessage");
+        
+            contactForm.addEventListener("submit", (e) => {
+                e.preventDefault(); // Empêche l'envoi du formulaire avant la validation
+        
+                // Récupérer les valeurs des champs
+                const name = document.getElementById("name").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const subject = document.getElementById("subject").value.trim();
+                const message = document.getElementById("message").value.trim();
+        
+                // Validation des champs
+                if (name === "" || email === "" || subject === "" || message === "") {
+                    // Afficher un message d'erreur si des champs sont vides
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erreur!',
+                        text: 'Tous les champs doivent être remplis.',
+                    });
+                    return;
+                }
+        
+                // Vérification de l'email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    // Afficher un message d'erreur si l'email est invalide
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erreur!',
+                        text: 'Veuillez entrer un email valide.',
+                    });
+                    return;
+                }
+        
+                // Si tout est validé, afficher un message de succès
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Message envoyé!',
+                    text: 'Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.',
+                }).then(() => {
+                    // Réinitialiser le formulaire
+                    contactForm.reset();
+                });
+            });
+        });
+        </script>
+        
+</body>
+</html>
